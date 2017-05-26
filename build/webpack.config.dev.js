@@ -47,6 +47,8 @@ module.exports = () => {
     devServer: {
       hot: true,
       noInfo: true,
+      host: '0.0.0.0',
+      port: 8080,
       publicPath: '/',
       historyApiFallback: true,
       proxy: {

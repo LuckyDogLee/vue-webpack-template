@@ -1,9 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
+const WebpackChunkHash = require('webpack-chunk-hash');
 const baseConfig = require('./webpack.config.base.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const WebpackChunkHash = require('webpack-chunk-hash');
-const webpack = require('webpack');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -56,6 +57,11 @@ module.exports = () => {
     plugins: [
       new ExtractTextPlugin({
         filename: 'stylesheets/[name].[contenthash].css',
+      }),
+      new OptimizeCSSPlugin({
+        cssProcessorOptions: {
+          safe: true,
+        },
       }),
       new WebpackChunkHash(),
       new webpack.DefinePlugin({
