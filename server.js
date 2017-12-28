@@ -8,7 +8,7 @@ const app = express();
 // for the HTML5 History API
 app.use(history({
   rewrites: [
-    { from: /^\/proxy\/api\//, to: '/api/' },
+    { from: /^\/api\//, to: '/api/' },
   ]
 }));
 
@@ -18,8 +18,9 @@ app.use(express.static('dist',  {
   setHeaders: setCustomCacheControl
 }));
 
+// proxy api
 app.use('/api/', proxy({
-  target: '',
+  target: 'https://cnodejs.org/',
   logLevel: 'debug',
   changeOrigin: true
 }));

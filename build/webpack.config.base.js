@@ -5,21 +5,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = () => {
   const base = {
     entry: {
-      main: './src/main.js',
       vendor: './src/vendor.js',
+      main: './src/main.js',
     },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor', 'manifest'],
-        minChunks: Infinity,
-      }),
       new HtmlWebpackPlugin({
         template: './src/index.html',
       }),
-      new ChunkManifestPlugin({
-        filename: 'chunkManifest.json',
-        manifestVariable: 'webpackManifest',
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: Infinity,
       }),
+      // new ChunkManifestPlugin({
+      //   filename: 'chunkManifest.json',
+      //   manifestVariable: 'webpackManifest',
+      // }),
     ],
   };
 
