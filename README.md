@@ -6,15 +6,15 @@ a vue webpack template
 # install dependencies
 npm install
 
-# serve at localhost:3000
+# serve at localhost:8080
 npm run dev
 
 # build for production with minification
 npm run build
 
-# start
+# start: serve at port 3000
 npm run start
 
-# restart
+# restart: serve at port 3000
 npm run restart
 ```
